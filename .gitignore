@@ -7,9 +7,6 @@ __pycache__/
 *$py.class
 *.so
 
-# Log files
-*.log
-
 # Virtual environment
 venv/
 env/
@@ -35,3 +32,5 @@ dist/
 .pytest_cache/
 .coverage
 htmlcov/
+
+plan
