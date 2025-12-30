@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Futures Trading Bot</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="background-animation"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">
+                <span class="logo-icon">₿</span>
+                Binance Futures Bot
+            </h1>
+            <p class="subtitle">Advanced Trading Interface • Testnet Mode</p>
+        </header>
+
+        <main>
+            <div class="grid">
+                <!-- Order Form Card -->
+                <div class="card order-card">
+                    <div class="card-header">
+                        <h2>Place Order</h2>
+                        <div class="status-badge" id="statusBadge">Ready</div>
+                    </div>
+
+                    <form id="orderForm">
+                        <div class="form-group">
+                            <label for="symbol">Symbol</label>
+                            <input type="text" id="symbol" name="symbol" value="BTCUSDT" placeholder="e.g., BTCUSDT"
+                                required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="side">Side</label>
+                                <select id="side" name="side" required>
+                                    <option value="BUY">Buy</option>
+                                    <option value="SELL">Sell</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="type">Order Type</label>
+                                <select id="type" name="type" required>
+                                    <option value="MARKET">Market</option>
+                                    <option value="LIMIT">Limit</option>
+                                    <option value="STOP_LIMIT">Stop-Limit</option>
+                                    <option value="OCO">OCO</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" name="quantity" step="0.001" placeholder="0.001"
+                                required>
+                        </div>
+
+                        <div class="form-group" id="priceGroup" style="display: none;">
+                            <label for="price">Price (USDT)</label>
+                            <input type="number" id="price" name="price" step="0.01" placeholder="Enter limit price">
+                        </div>
+
+                        <div class="form-group" id="stopPriceGroup" style="display: none;">
+                            <label for="stop_price">Stop Price (USDT)</label>
+                            <input type="number" id="stop_price" name="stop_price" step="0.01"
+                                placeholder="Enter stop price">
+                        </div>
+
+                        <div class="form-group" id="stopLimitPriceGroup" style="display: none;">
+                            <label for="stop_limit_price">Stop Limit Price (USDT)</label>
+                            <input type="number" id="stop_limit_price" name="stop_limit_price" step="0.01"
+                                placeholder="Enter stop limit price">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Place Order</span>
+                            <span class="btn-loader" style="display: none;"></span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Status & Logs Card -->
+                <div class="card logs-card">
+                    <div class="card-header">
+                        <h2>Activity Log</h2>
+                        <button class="btn-refresh" id="refreshLogs" title="Refresh logs">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M23 4v6h-6M1 20v-6h6" />
+                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="result" class="result-message"></div>
+
+                    <div class="logs-container">
+                        <div id="logs" class="logs">
+                            <div class="log-empty">No logs yet. Place an order to get started.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>⚡ Powered by Binance Futures API • <strong>Testnet Only</strong></p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
